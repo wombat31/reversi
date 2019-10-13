@@ -34,17 +34,31 @@ function drawBoard(){
         ctx.closePath();
     }
 
-    /*
+    //draw circles dependent on colour if they exist
     for (y=0; y<8; y++){
         for (x=0; x<8; x++){
             if(board[y][x] == "B"){
                 ctx.beginPath();
-                ctx.fillStyle = "black";
-                ctx.arc(x+100,y+100,15,0,Math.PI*2,false);
+                ctx.strokeStyle = "black";
+                ctx.arc(((x+1)*50)-5,((y+1)*50)-5,15,0,Math.PI*2,false);
+                ctx.stroke();
+                ctx.fillStyle="black";
+                ctx.fill();
                 ctx.closePath();
             }
+            else {
+                if(board[y][x] == "W"){
+                    ctx.beginPath();
+                    ctx.strokeStyle = "white";
+                    ctx.arc(((x+1)*50)-5,((y+1)*50)-5,15,0,Math.PI*2,false);
+                    ctx.stroke();
+                    ctx.fillStyle="white";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
         }
-    }*/
+    }
 }
 
 drawBoard();
