@@ -1,0 +1,27 @@
+#myCanvas{
+    float:left;
+}
+#scoreGraphic{
+    float:left;
+}
+#playAgain{
+    display: none;
+}
+#titleHolder {
+    background-color:black;
+    color:white;
+    width:440px;
+    height:22px;
+    font-family:arial, sens-serif;
+    text-align: center;
+    padding-top: 3px;
+}
+#turnIndicator {
+    background-color:black;
+    color:white;
+    width:440px;
+    height:22px;
+    font-family:arial, sens-serif;
+    text-align: center;
+    padding-top: 3px;
+}
