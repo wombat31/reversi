@@ -9,6 +9,9 @@ var board = [
     [".",".",".",".",".",".",".","."]
 ]
 
+var gameRun = true;
+var whiteTurn = true;
+
 function drawBoard(){
     canvas = document.getElementById('myCanvas');
     ctx = canvas.getContext('2d');
@@ -60,5 +63,41 @@ function drawBoard(){
         }
     }
 }
+
+//add an event listener for canvas clicked
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+
+myCanvas.addEventListener('click', function(event) {
+    var rect = myCanvas.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+    if(gameRun){
+        for (g=0; g<8; g++){
+            for (f=0; f<8; f++){
+                if (whiteTurn){
+                    //add a loop to check and add new piece
+                    if(x>((f*50)+20) && x <((f*50))+70 && y>((g*50)+20) && y <((g*50)+70) && board[f][g]== "."){
+                        board[g][f] = "W";
+                        drawBoard();
+                        whiteTurn = false;
+                        document.getElementById('turnIndicator').innerHTML = "Black Turn";
+                        
+                    }
+                } else {
+                    //add black tokens
+                    if(x>((f*50)+20) && x <((f*50))+70 && y>((g*50)+20) && y <((g*50)+70) && board[f][g]== "."){
+                        board[g][f] = "B";
+                        drawBoard();
+                        whiteTurn = true;
+                        document.getElementById('turnIndicator').innerHTML = "White Turn";
+                        
+                    }
+                }
+            }
+        }
+    }
+
+}, false);
 
 drawBoard();
