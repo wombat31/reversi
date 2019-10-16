@@ -112,10 +112,11 @@ myCanvas.addEventListener('click', function(event) {
         
         if(whiteTurn){//TOP ROW
             if(x>20 && x< 70 && y > 20 && y < 70 && board[0][0] == "."){
-                board[0][0] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                //board[0][0] = "W";
+                allowedMove(0,0,"white");
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             
             }
             else if(x>70 && x< 120 && y > 20 && y < 70 && board[0][1] == "."){
@@ -155,10 +156,11 @@ myCanvas.addEventListener('click', function(event) {
                 document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 20 && y < 70 && board[0][7] == "."){
-                board[0][7] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                //board[0][7] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(0,7,"white");
             }//SECOND ROW
 
             else if(x>20 && x< 70 && y > 70 && y < 120 && board[1][0] == "."){
@@ -456,10 +458,11 @@ myCanvas.addEventListener('click', function(event) {
                 document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }//ROW 8
             else if(x>20 && x< 70 && y > 370 && y < 420 && board[7][0] == "."){
-                board[7][0] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(7,0,"white");
+                //board[7][0] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             
             }
             else if(x>70 && x< 120 && y > 370 && y < 420 && board[7][1] == "."){
@@ -499,10 +502,11 @@ myCanvas.addEventListener('click', function(event) {
                 document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 370 && y < 420 && board[7][7] == "."){
-                board[7][7] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(7,7,"white");
+                //board[7][7] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
 
 
@@ -895,6 +899,7 @@ myCanvas.addEventListener('click', function(event) {
                 document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 370 && y < 420 && board[7][7] == "."){
+                
                 board[7][7] = "B";
                 drawBoard();
                 whiteTurn = true;
@@ -906,5 +911,95 @@ myCanvas.addEventListener('click', function(event) {
     }
     //console.log("x:" + x + " y:" + y);
 }, false);
+
+function allowedMove(row,column,colourTurn){
+    if (colourTurn == "white"){
+        /*THHIS WORKS BY CHICKING ADJACENT BLOCKS FOR TOKENS
+        if(row == 0 && column == 0 && board[row][column] == "."){//This looks after the 0 , 0 corner
+            if(board[row][column+1] != "B"
+            || board[row][column+1] != "W"
+            || board[row+1][column+1] != "B"
+            || board[row+1][column+1] != "W"
+            || board[row+1][column] != "B"
+            || board[row+1][column] != "W"
+        ){
+                alert("Not a valid move!");
+               
+            } else {
+                board[row][column] = "W";
+                drawBoard();
+                whiteTurn = false;
+                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+            }
+
+        }*/
+        //***************FOUR CORNERS*************/
+        if(row == 0 && column == 0 && board[row][column] == "."){//top left corner
+            arrayEast = [];
+            arraySouthEast = [];
+            arraySouth = [];
+            for (i = 0; i<=7; i++){
+                arrayEast.push(board[column][row + i]);
+                arraySouthEast.push(board[row + i][column + i]);
+                arraySouth.push(board[row+i][column]);
+            }
+            if(arrayEast[0] == "." && arraySouthEast[0] == "." && arraySouth[0] == "."){
+                alert("Invalid Move");
+                
+            }
+            else {
+                //run through arrays to check for possible reversi
+            }
+        }
+        else if(row== 0 && column == 7 && board[row][column] == "."){//top right corner
+            arraySouth = [];
+            arraySouthWest = [];
+            arrayWest = [];
+            for (i=0; i<= 7; i++){
+                arraySouth.push(board[row+i][column]);
+                arraySouthWest.push(board[row + i][column - i]);
+                arrayWest.push(board[row][column-1]);
+            }
+            if(arraySouth[0] == "." && arraySouthWest[0] == "." && arrayWest[0] == "."){
+                alert("Invalid Move");
+            }
+            else {
+                //run through arrays to check for possible reversi
+            }
+        }
+        else if(row == 7 && column == 7 && board[row][column] == "."){//bottom right corner
+            arrayWest = [];
+            arrayNorthWest = [];
+            arrayNorth = [];
+            for (i=0; i<= 7; i++){
+                arrayWest.push(board[row][column-1]);
+                arrayNorthWest.push(board[row-1][column-1]);
+                arrayNorth.push(board[row-1][column]);
+            }
+            if(arrayWest[0] == "." && arrayNorthWest[0] == "." && arrayNorth[0] == "."){
+                alert("Invalid Move");
+            }
+            else {
+                //run through arrays to check for possible reversi
+            }
+        }
+        else if(row == 7 && column == 0 && board[row][column] == "."){
+            arrayNorth = [];
+            arrayNorthEast = [];
+            arrayEast = [];
+            for (i=0; i<= 7; i++){
+                arrayNorth.push(board[row-i][column]);
+                arrayNorthEast.push(board[row-i][column+i]);
+                arrayEast.push(board[row][column+i]);
+            }
+            if(arrayNorth[0] == "." && arrayNorthEast[0] == "." && arrayEast[0] == "."){
+                alert("Invalid Move");
+            }
+            else {
+                //run through array to check for possible reversi
+            }
+        }
+    }
+}
 
 drawBoard();
