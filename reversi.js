@@ -23,24 +23,28 @@ function drawBoard(){
     //add the division lines
     
     for(x = 1; x<8; x++){
+        ctx.save();
         ctx.beginPath();
         ctx.fillStyle = "black";
         ctx.lineWidth = 2;
         ctx.moveTo((x*50)+20,20);
         ctx.lineTo((x*50)+20,420);
-        ctx.stroke();
-        ctx.closePath();
-        ctx.beginPath();
+        //ctx.stroke();
+        //ctx.closePath();
+        //ctx.beginPath();
         ctx.moveTo(20, (x*50)+20);
         ctx.lineTo(420, (x*50)+20);
-        ctx.stroke();
         ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+        
     }
 
     //draw circles dependent on colour if they exist
     for (y=0; y<8; y++){
         for (x=0; x<8; x++){
             if(board[y][x] == "B"){
+                ctx.save();
                 ctx.beginPath();
                 ctx.strokeStyle = "black";
                 ctx.arc(((x+1)*50)-5,((y+1)*50)-5,15,0,Math.PI*2,false);
@@ -48,9 +52,13 @@ function drawBoard(){
                 ctx.fillStyle="black";
                 ctx.fill();
                 ctx.closePath();
+                
+                ctx.restore();
+
             }
             else {
                 if(board[y][x] == "W"){
+                    ctx.save();
                     ctx.beginPath();
                     ctx.strokeStyle = "white";
                     ctx.arc(((x+1)*50)-5,((y+1)*50)-5,15,0,Math.PI*2,false);
@@ -58,9 +66,37 @@ function drawBoard(){
                     ctx.fillStyle="white";
                     ctx.fill();
                     ctx.closePath();
+                    ctx.restore();
                 }
             }
         }
+    }
+}
+
+function topRowPlaceBuildArrays(column,row){
+    arrayEast = [];
+    arraySouthEast = [];
+    arraySouth = [];
+    arraySouthWest = [];
+    arrayWest = [];
+
+    for(i=0; i < 7-column; i++){
+        arrayEast.push(board[row][column+i+1]);
+        arraySouthEast.push(board[row+i+1][column+i+1]);
+        
+    }
+    for(i=0; i < 7-row; i++){
+        arraySouth.push(board[row+i+1][column]);
+    }
+    for(i=0; i < column; i++){
+        arraySouthWest.push(board[row+i+1][column-i-1]);
+    }
+
+    for(i=0; i < column; i++){
+        arrayWest.push(board[row][column-i-1]);
+    }
+    if(arrayEast[0] == "." && arraySouthEast[0] == "." && arraySouth[0] == "."  && arraySouthWest[0] == "." && arrayWest[0] == "."){
+        alert("Invalid Move");
     }
 }
 
@@ -120,40 +156,46 @@ myCanvas.addEventListener('click', function(event) {
             
             }
             else if(x>70 && x< 120 && y > 20 && y < 70 && board[0][1] == "."){
-                board[0][1] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                //board[0][1] = "W";
+                allowedMove(0,1,"white");
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>120 && x< 170 && y > 20 && y < 70 && board[0][2] == "."){
-                board[0][2] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                //board[0][2] = "W";
+                allowedMove(0,2,"white");
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>170 && x< 220 && y > 20 && y < 70 && board[0][3] == "."){
-                board[0][3] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                //board[0][3] = "W";
+                allowedMove(0,3,"white");
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>220 && x< 270 && y > 20 && y < 70 && board[0][4] == "."){
-                board[0][4] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                //board[0][4] = "W";
+                allowedMove(0,4,"white");
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>270 && x< 320 && y > 20 && y < 70 && board[0][5] == "."){
-                board[0][5] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                //board[0][5] = "W";
+                allowedMove(0,5,"white");
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>320 && x< 370 && y > 20 && y < 70 && board[0][6] == "."){
-                board[0][6] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                //board[0][6] = "W";
+                allowedMove(0,6,"white");
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 20 && y < 70 && board[0][7] == "."){
                 //board[0][7] = "W";
@@ -983,7 +1025,7 @@ function allowedMove(row,column,colourTurn){
                 //run through arrays to check for possible reversi
             }
         }
-        else if(row == 7 && column == 0 && board[row][column] == "."){
+        else if(row == 7 && column == 0 && board[row][column] == "."){//bottom left
             arrayNorth = [];
             arrayNorthEast = [];
             arrayEast = [];
@@ -998,6 +1040,45 @@ function allowedMove(row,column,colourTurn){
             else {
                 //run through array to check for possible reversi
             }
+        ///////////CHECK THE SIDES////////////
+        //TOP SIDE 
+        }
+        else if(row == 0 && board[row][column] == "." && column == 1 || column ==2 || column == 3 || column == 4 || column == 5 || column == 6){
+            console.log("you have chosen the top row");
+            topRowPlaceBuildArrays(column, row);
+            /*
+            arrayEast = [];
+            arraySouthEast = [];
+            arraySouth = [];
+            arraySouthWest = [];
+            arrayWest = [];
+            
+            if(column == 1){
+                for(i=0; i < 7-column; i++){
+                    arrayEast.push(board[row][column+i+1]);
+                    arraySouthEast.push(board[row+i+1][column+i+1]);
+                    
+                }
+                for(i=0; i < 7-row; i++){
+                    arraySouth.push(board[row+i+1][column]);
+                }
+                for(i=0; i < column; i++){
+                    arraySouthWest.push(board[row+i+1][column+i-1]);
+                }
+
+                for(i=0; i < column; i++){
+                    arrayWest.push(board[row+i][column+i-1]);
+                }
+                if(arrayEast[0] == "." && arraySouthEast[0] == "." && arraySouth[0] == "."  && arraySouthWest[0] == "." && arrayWest[0] == "."){
+                    alert("Invalid Move");
+                }
+            }
+            */
+            console.log(arrayEast);
+            console.log(arraySouthEast);
+            console.log(arraySouth);
+            console.log(arraySouthWest);
+            console.log(arrayWest);
         }
     }
 }
