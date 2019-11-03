@@ -198,6 +198,110 @@ function leftColumnPlaceBuildArrays(column,row){
     }
 
 }
+
+function middlePlaceBuildArrays(column,row){
+    
+    arrayNorth = [];
+    arrayNorthEast = [];
+    arrayEast = [];
+    arraySouthEast = [];
+    arraySouth = [];
+    arraySouthWest = [];
+    arrayWest = [];
+    arrayNorthWest = [];
+
+    //console.log("in middleBuildArray");
+    //load north ------> NorthWest arrays
+    //north
+    for (i=0; i < row; i ++){
+        arrayNorth.push(board[row-i-1][column]);
+        
+    }
+    //south
+    for(i=0; i < 7-row; i++){
+        arraySouth.push(board[row+i+1][column]);
+    }
+    //east
+    for(i=0; i < 7-column; i++){
+        arrayEast.push(board[row][column+i+1]);
+    }
+    //west
+    for(i=0; i < column; i++){
+        arrayWest.push(board[row][column-i-1]);
+    }
+    //northEast.southEast.southWest.northWest
+    northEastArrayBuildLength = [
+        [0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,1,0],
+        [2,2,2,2,2,2,1,0],
+        [3,3,3,3,3,2,1,0],
+        [4,4,4,4,3,2,1,0],
+        [5,5,5,4,3,2,1,0],
+        [6,6,5,4,3,2,1,0],
+        [7,6,5,4,3,2,1,0]
+    ]
+    for(i=0;i < northEastArrayBuildLength[row][column]; i++){
+        arrayNorthEast.push(board[row-i-1][column+i+1]);
+    }
+    southEastArrayBuildLength = [
+        [7,6,5,4,3,2,1,0],
+        [6,6,5,4,3,2,1,0],
+        [5,5,5,4,3,2,1,0],
+        [4,4,4,4,3,2,1,0],
+        [3,3,3,3,3,2,1,0],
+        [2,2,2,2,2,2,1,0],
+        [1,1,1,1,1,1,1,0],
+        [0,0,0,0,0,0,0,0]
+    ]
+
+    for(i=0; i < southEastArrayBuildLength[row][column];i++){
+        arraySouthEast.push(board[row+i+1][column+i+1]);
+    }
+    southWestArrayBuildLength = [
+        [0,1,2,3,4,5,6,7],
+        [0,1,2,3,4,5,6,6],
+        [0,1,2,3,4,5,5,5],
+        [0,1,2,3,4,4,4,4],
+        [0,1,2,3,3,3,3,3],
+        [0,1,2,2,2,2,2,2],
+        [0,1,1,1,1,1,1,1],
+        [0,0,0,0,0,0,0,0]
+    ]
+    
+    for(i=0; i < southWestArrayBuildLength[row][column];i++){
+        arraySouthWest.push(board[row+i+1][column-i-1]);
+    }
+
+    northWestArrayBuildLength =  [
+        [0,0,0,0,0,0,0,0],
+        [0,1,1,1,1,1,1,1],
+        [0,1,2,2,2,2,2,2],
+        [0,1,2,3,3,3,3,3],
+        [0,1,2,3,4,4,4,4],
+        [0,1,2,3,4,5,5,5],
+        [0,1,2,3,4,5,6,6],
+        [0,1,2,3,4,5,6,7]
+    ]
+
+    for(i=0; i < northWestArrayBuildLength[row][column];i++){
+        arrayNorthWest.push(board[row-i-1][column-i-1]);
+    }
+    if(arrayNorth[0] == "." && arrayNorthEast[0] == "." && arrayEast[0] == "." && arraySouthEast[0] == "." && arraySouth[0] == "." && arraySouthWest[0] == "." && arrayWest[0] == "." && arrayNorthWest == "."){
+        alert("That is an invalid move!");
+        arrayNorth = [];
+        arrayNorthEast = [];
+        arrayEast = [];
+        arraySouthEast = [];
+        arraySouth = [];
+        arraySouthWest = [];
+        arrayWest = [];
+        arrayNorthWest = [];
+    }
+
+}
+
+
+
 //add an event listener for canvas clicked
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
@@ -304,6 +408,7 @@ myCanvas.addEventListener('click', function(event) {
             }//SECOND ROW
 
             else if(x>20 && x< 70 && y > 70 && y < 120 && board[1][0] == "."){
+                
                 allowedMove(1,0,"white");
                 //board[1][0] = "W";
                 //drawBoard();
@@ -312,40 +417,47 @@ myCanvas.addEventListener('click', function(event) {
             
             }
             else if(x>70 && x< 120 && y > 70 && y < 120 && board[1][1] == "."){
-                board[1][1] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                
+                allowedMove(1,1,"white");
+                //board[1][1] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>120 && x< 170 && y > 70 && y < 120 && board[1][2] == "."){
-                board[1][2] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(1,2,"white");
+                //board[1][2] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>170 && x< 220 && y > 70 && y < 120 && board[1][3] == "."){
-                board[1][3] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(1,3,"white");
+                //board[1][3] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>220 && x< 270 && y > 70 && y < 120 && board[1][4] == "."){
-                board[1][4] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(1,4,"white");
+                //board[1][4] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>270 && x< 320 && y > 70 && y < 120 && board[1][5] == "."){
-                board[1][5] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(1,5,"white");
+                //board[1][5] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>320 && x< 370 && y > 70 && y < 120 && board[1][6] == "."){
-                board[1][6] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(1,6,"white");
+                //board[1][6] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 70 && y < 120 && board[1][7] == "."){
                 allowedMove(1,7,"white");
@@ -355,6 +467,7 @@ myCanvas.addEventListener('click', function(event) {
                 //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }//THIRD ROW
             else if(x>20 && x< 70 && y > 120 && y < 170 && board[2][0] == "."){
+                
                 allowedMove(2,0,"white");
                 //board[2][0] = "W";
                 //drawBoard();
@@ -363,40 +476,46 @@ myCanvas.addEventListener('click', function(event) {
             
             }
             else if(x>70 && x< 120 && y > 120 && y < 170 && board[2][1] == "."){
-                board[2][1] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(2,1,"white");
+                //board[2][1] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>120 && x< 170 && y > 120 && y < 170 && board[2][2] == "."){
-                board[2][2] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(2,2,"white");
+                //board[2][2] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>170 && x< 220 && y > 120 && y < 170 && board[2][3] == "."){
-                board[2][3] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(2,3,"white");
+                //board[2][3] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>220 && x< 270 && y > 120 && y < 170 && board[2][4] == "."){
-                board[2][4] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(2,4,"white");
+                //board[2][4] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>270 && x< 320 && y > 120 && y < 170 && board[2][5] == "."){
-                board[2][5] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(2,5,"white");
+                //board[2][5] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>320 && x< 370 && y > 120 && y < 170 && board[2][6] == "."){
-                board[2][6] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(2,6,"white");
+                //board[2][6] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 120 && y < 170 && board[2][7] == "."){
                 allowedMove(2,7,"white");
@@ -414,40 +533,46 @@ myCanvas.addEventListener('click', function(event) {
             
             }
             else if(x>70 && x< 120 && y > 170 && y < 220 && board[3][1] == "."){
-                board[3][1] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(3,1,"white");
+                //board[3][1] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>120 && x< 170 && y > 170 && y < 220 && board[3][2] == "."){
-                board[3][2] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(3,2,"white");
+                //board[3][2] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>170 && x< 220 && y > 170 && y < 220 && board[3][3] == "."){
-                board[3][3] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(3,3,"white");
+                //board[3][3] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>220 && x< 270 && y > 170 && y < 220 && board[3][4] == "."){
-                board[3][4] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(3,4,"white");
+                //board[3][4] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>270 && x< 320 && y > 170 && y < 220 && board[3][5] == "."){
-                board[3][5] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(3,5,"white");
+                //board[3][5] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>320 && x< 370 && y > 170 && y < 220 && board[3][6] == "."){
-                board[3][6] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(3,6,"white");
+                //board[3][6] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 170 && y < 220 && board[3][7] == "."){
                 allowedMove(3,7,"white");
@@ -465,40 +590,46 @@ myCanvas.addEventListener('click', function(event) {
             
             }
             else if(x>70 && x< 120 && y > 220 && y < 270 && board[4][1] == "."){
-                board[4][1] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(4,1,"white");
+                //board[4][1] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>120 && x< 170 && y > 220 && y < 270 && board[4][2] == "."){
-                board[4][2] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(4,2,"white");
+                //board[4][2] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>170 && x< 220 && y > 220 && y < 270 && board[4][3] == "."){
-                board[4][3] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(4,3,"white");
+                //board[4][3] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>220 && x< 270 && y > 220 && y < 270 && board[4][4] == "."){
-                board[4][4] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(4,4,"white");
+                //board[4][4] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>270 && x< 320 && y > 220 && y < 270 && board[4][5] == "."){
-                board[4][5] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(4,5,"white");
+                //board[4][5] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>320 && x< 370 && y > 220 && y < 270 && board[4][6] == "."){
-                board[4][6] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(4,6,"white");
+                //board[4][6] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 220 && y < 270 && board[4][7] == "."){
                 allowedMove(4,7,"white");
@@ -516,40 +647,46 @@ myCanvas.addEventListener('click', function(event) {
             
             }
             else if(x>70 && x< 120 && y > 270 && y < 320 && board[5][1] == "."){
-                board[5][1] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(5,1,"white");
+                //board[5][1] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>120 && x< 170 && y > 270 && y < 320 && board[5][2] == "."){
-                board[5][2] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(5,2,"white");
+                //board[5][2] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>170 && x< 220 && y > 270 && y < 320 && board[5][3] == "."){
-                board[5][3] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(5,3,"white");
+                //board[5][3] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>220 && x< 270 && y > 270 && y < 320 && board[5][4] == "."){
-                board[5][4] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(5,4,"white");
+                //board[5][4] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>270 && x< 320 && y > 270 && y < 320 && board[5][5] == "."){
-                board[5][5] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(5,5,"white");
+                //board[5][5] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>320 && x< 370 && y > 270 && y < 320 && board[5][6] == "."){
-                board[5][6] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(5,6,"white");
+                //board[5][6] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 270 && y < 320 && board[5][7] == "."){
                 allowedMove(5,7,"white");
@@ -567,40 +704,46 @@ myCanvas.addEventListener('click', function(event) {
             
             }
             else if(x>70 && x< 120 && y > 320 && y < 370 && board[6][1] == "."){
-                board[6][1] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(6,1,"white");
+                //board[6][1] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>120 && x< 170 && y > 320 && y < 370 && board[6][2] == "."){
-                board[6][2] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(6,2,"white");
+                //board[6][2] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>170 && x< 220 && y > 320 && y < 370 && board[6][3] == "."){
-                board[6][3] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(6,3,"white");
+                //board[6][3] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>220 && x< 270 && y > 320 && y < 370 && board[6][4] == "."){
-                board[6][4] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(6,4,"white");
+                //board[6][4] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>270 && x< 320 && y > 320 && y < 370 && board[6][5] == "."){
-                board[6][5] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(6,5,"white");
+                //board[6][5] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>320 && x< 370 && y > 320 && y < 370 && board[6][6] == "."){
-                board[6][6] = "W";
-                drawBoard();
-                whiteTurn = false;
-                document.getElementById("turnIndicator").innerHTML = "Black Turn";
+                allowedMove(6,6,"white");
+                //board[6][6] = "W";
+                //drawBoard();
+                //whiteTurn = false;
+                //document.getElementById("turnIndicator").innerHTML = "Black Turn";
             }
             else if(x>370 && x< 420 && y > 320 && y < 370 && board[6][7] == "."){
                 allowedMove(6,7,"white");
@@ -1073,7 +1216,8 @@ myCanvas.addEventListener('click', function(event) {
 
 function allowedMove(row,column,colourTurn){
     if (colourTurn == "white"){
-        /*THHIS WORKS BY CHICKING ADJACENT BLOCKS FOR TOKENS
+        
+        /*THIS WORKS BY CHICKING ADJACENT BLOCKS FOR TOKENS
         if(row == 0 && column == 0 && board[row][column] == "."){//This looks after the 0 , 0 corner
             if(board[row][column+1] != "B"
             || board[row][column+1] != "W"
@@ -1192,7 +1336,7 @@ function allowedMove(row,column,colourTurn){
             console.log(arrayEast);
         }
         //consider the left column on the board
-        else if(column == 0 && row == 1 || row == 2 || row == 3 || row == 4 || row == 5 || row == 6 && board[row][column] == "."){
+        else if((column == 0) && (row == 1 || row == 2 || row == 3 || row == 4 || row == 5 || row == 6) && board[row][column] == "."){
             console.log("You have chosen the left column");
             leftColumnPlaceBuildArrays(column, row);
             console.log(arrayNorth);
@@ -1200,6 +1344,19 @@ function allowedMove(row,column,colourTurn){
             console.log(arrayEast);
             console.log(arraySouthEast);
             console.log(arraySouth);
+        }
+        //consider the midle of the board
+        else if(column != 0 && column != 7 && row != 0 && row != 7){
+            console.log("You are in the middle");
+            middlePlaceBuildArrays(column, row);
+            console.log(arrayNorth);
+            console.log(arrayNorthEast);
+            console.log(arrayEast);
+            console.log(arraySouthEast);
+            console.log(arraySouth);
+            console.log(arraySouthWest);
+            console.log(arrayWest);
+            console.log(arrayNorthWest);
         }
     }
 }
