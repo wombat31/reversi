@@ -2,9 +2,9 @@ var board = [
     [".",".",".",".",".",".",".","."],
     [".",".",".",".",".",".",".","."],
     [".",".",".",".",".",".",".","."],
-    [".",".",".","B","W",".",".","."],
-    [".",".",".","W","B",".",".","."],
-    [".",".",".",".",".",".",".","."],
+    [".","W","B","B","W","W",".","."],
+    [".",".","B","W","B",".",".","."],
+    [".",".","W",".",".","W",".","."],
     [".",".",".",".",".",".",".","."],
     [".",".",".",".",".",".",".","."]
 ]
@@ -72,7 +72,7 @@ function drawBoard(){
         }
     }
 }
-
+/*
 function topRowPlaceBuildArrays(column,row){
     arrayEast = [];
     arraySouthEast = [];
@@ -315,7 +315,7 @@ function middlePlaceBuildArrays(column,row){
 
 }
 
-
+*/
 
 //add an event listener for canvas clicked
 var canvas = document.getElementById('myCanvas');
@@ -829,398 +829,461 @@ myCanvas.addEventListener('click', function(event) {
 
         } else {//BLACK TOKENS
             if(x>20 && x< 70 && y > 20 && y < 70 && board[0][0] == "."){
-                board[0][0] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(0,0,"black");
+                //board[0][0] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>70 && x< 120 && y > 20 && y < 70 && board[0][1] == "."){
-                board[0][1] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(0,1,"black");
+                //board[0][1] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>120 && x< 170 && y > 20 && y < 70 && board[0][2] == "."){
-                board[0][2] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(0,2,"black");
+                //board[0][2] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>170 && x< 220 && y > 20 && y < 70 && board[0][3] == "."){
-                board[0][3] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(0,3,"black");
+                //board[0][3] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>220 && x< 270 && y > 20 && y < 70 && board[0][4] == "."){
-                board[0][4] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(0,4,"black");
+                //board[0][4] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>270 && x< 320 && y > 20 && y < 70 && board[0][5] == "."){
-                board[0][5] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(0,5,"black");
+                //board[0][5] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>320 && x< 370 && y > 20 && y < 70 && board[0][6] == "."){
-                board[0][6] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(0,6,"black");
+                //board[0][6] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 20 && y < 70 && board[0][7] == "."){
-                board[0][7] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(0,7,"black");
+                //board[0][7] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             //SECOND ROW
             
             else if(x>20 && x< 70 && y > 70 && y < 120 && board[1][0] == "."){
-                board[1][0] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(1,0,"black");
+                //board[1][0] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             
             }
             else if(x>70 && x< 120 && y > 70 && y < 120 && board[1][1] == "."){
-                board[1][1] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(1,1,"black");
+                //board[1][1] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>120 && x< 170 && y > 70 && y < 120 && board[1][2] == "."){
-                board[1][2] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(1,2,"black");
+                //board[1][2] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>170 && x< 220 && y > 70 && y < 120 && board[1][3] == "."){
-                board[1][3] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(1,3,"black");
+                //board[1][3] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>220 && x< 270 && y > 70 && y < 120 && board[1][4] == "."){
-                board[1][4] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(1,4,"black");
+                //board[1][4] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>270 && x< 320 && y > 70 && y < 120 && board[1][5] == "."){
-                board[1][5] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(1,5,"black");
+                //board[1][5] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>320 && x< 370 && y > 70 && y < 120 && board[1][6] == "."){
-                board[1][6] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(1,6,"black");
+                //board[1][6] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 70 && y < 120 && board[1][7] == "."){
-                board[1][7] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(1,7,"black");
+                //board[1][7] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }//THIRD ROW
             else if(x>20 && x< 70 && y > 120 && y < 170 && board[2][0] == "."){
-                board[2][0] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(2,0,"black");
+                //board[2][0] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             
             }
             else if(x>70 && x< 120 && y > 120 && y < 170 && board[2][1] == "."){
-                board[2][1] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(2,1,"black");
+                //board[2][1] = "B";
+                //();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>120 && x< 170 && y > 120 && y < 170 && board[2][2] == "."){
-                board[2][2] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(2,2,"black");
+                //board[2][2] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>170 && x< 220 && y > 120 && y < 170 && board[2][3] == "."){
-                board[2][3] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(2,3,"black");
+                //board[2][3] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>220 && x< 270 && y > 120 && y < 170 && board[2][4] == "."){
-                board[2][4] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(2,4,"black");
+                //board[2][4] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>270 && x< 320 && y > 120 && y < 170 && board[2][5] == "."){
-                board[2][5] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(2,5,"black");
+                //board[2][5] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>320 && x< 370 && y > 120 && y < 170 && board[2][6] == "."){
-                board[2][6] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(2,6,"black");
+                //board[2][6] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 120 && y < 170 && board[2][7] == "."){
-                board[2][7] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(2,7,"black");
+                //board[2][7] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }//FOURTH ROW
             else if(x>20 && x< 70 && y > 170 && y < 220 && board[3][0] == "."){
-                board[3][0] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(3,0,"black");
+                //board[3][0] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             
             }
             else if(x>70 && x< 120 && y > 170 && y < 220 && board[3][1] == "."){
-                board[3][1] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(3,1,"black");
+                //board[3][1] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>120 && x< 170 && y > 170 && y < 220 && board[3][2] == "."){
-                board[3][2] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(3,2,"black");
+                //board[3][2] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>170 && x< 220 && y > 170 && y < 220 && board[3][3] == "."){
-                board[3][3] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(3,3,"black");
+                //board[3][3] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>220 && x< 270 && y > 170 && y < 220 && board[3][4] == "."){
-                board[3][4] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(3,4,"black");
+                //board[3][4] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>270 && x< 320 && y > 170 && y < 220 && board[3][5] == "."){
-                board[3][5] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(3,5,"black");
+                //board[3][5] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>320 && x< 370 && y > 170 && y < 220 && board[3][6] == "."){
-                board[3][6] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(3,6,"black");
+                //board[3][6] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 170 && y < 220 && board[3][7] == "."){
-                board[3][7] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(3,7,"black");
+                //board[3][7] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }//FIFTH ROW
             else if(x>20 && x< 70 && y > 220 && y < 270 && board[4][0] == "."){
-                board[4][0] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(4,0,"black");
+                //board[4][0] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             
             }
             else if(x>70 && x< 120 && y > 220 && y < 270 && board[4][1] == "."){
-                board[4][1] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(4,1,"black");
+                //board[4][1] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>120 && x< 170 && y > 220 && y < 270 && board[4][2] == "."){
-                board[4][2] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(4,2,"black");
+                //board[4][2] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>170 && x< 220 && y > 220 && y < 270 && board[4][3] == "."){
-                board[4][3] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(4,3,"black");
+                //board[4][3] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>220 && x< 270 && y > 220 && y < 270 && board[4][4] == "."){
-                board[4][4] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(4,4,"black");
+                //board[4][4] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>270 && x< 320 && y > 220 && y < 270 && board[4][5] == "."){
-                board[4][5] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(4,5,"black");
+                //board[4][5] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>320 && x< 370 && y > 220 && y < 270 && board[4][6] == "."){
-                board[4][6] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(4,6,"black");
+                //board[4][6] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 220 && y < 270 && board[4][7] == "."){
-                board[4][7] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(4,7,"black");
+                //board[4][7] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }//SIXTH ROW
             else if(x>20 && x< 70 && y > 270 && y < 320 && board[5][0] == "."){
-                board[5][0] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(5,0,"black");
+                //board[5][0] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             
             }
             else if(x>70 && x< 120 && y > 270 && y < 320 && board[5][1] == "."){
-                board[5][1] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(5,1,"black");
+                //board[5][1] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>120 && x< 170 && y > 270 && y < 320 && board[5][2] == "."){
-                board[5][2] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(5,2,"black");
+                //board[5][2] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>170 && x< 220 && y > 270 && y < 320 && board[5][3] == "."){
-                board[5][3] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(5,3,"black");
+                //board[5][3] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>220 && x< 270 && y > 270 && y < 320 && board[5][4] == "."){
-                board[5][4] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(5,4,"black");
+                //board[5][4] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>270 && x< 320 && y > 270 && y < 320 && board[5][5] == "."){
-                board[5][5] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(5,5,"black");
+                //board[5][5] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>320 && x< 370 && y > 270 && y < 320 && board[5][6] == "."){
-                board[5][6] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(5,6,"black");
+                //board[5][6] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 270 && y < 320 && board[5][7] == "."){
-                board[5][7] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(5,7,"black");
+                //board[5][7] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }//ROW 7
             else if(x>20 && x< 70 && y > 320 && y < 370 && board[6][0] == "."){
-                board[6][0] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(6,0,"black");
+                //board[6][0] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             
             }
             else if(x>70 && x< 120 && y > 320 && y < 370 && board[6][1] == "."){
-                board[6][1] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(6,1,"black");
+                //board[6][1] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>120 && x< 170 && y > 320 && y < 370 && board[6][2] == "."){
-                board[6][2] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(6,2,"black");
+                //board[6][2] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>170 && x< 220 && y > 320 && y < 370 && board[6][3] == "."){
-                board[6][3] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(6,3,"black");
+                //board[6][3] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>220 && x< 270 && y > 320 && y < 370 && board[6][4] == "."){
-                board[6][4] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(6,4,"black");
+                //board[6][4] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>270 && x< 320 && y > 320 && y < 370 && board[6][5] == "."){
-                board[6][5] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(6,5,"black");
+                //board[6][5] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>320 && x< 370 && y > 320 && y < 370 && board[6][6] == "."){
-                board[6][6] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(6,6,"black");
+                //board[6][6] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 320 && y < 370 && board[6][7] == "."){
-                board[6][7] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(6,7,"black");
+                //board[6][7] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }//ROW 8
             else if(x>20 && x< 70 && y > 370 && y < 420 && board[7][0] == "."){
-                board[7][0] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(7,0,"black");
+                //board[7][0] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             
             }
             else if(x>70 && x< 120 && y > 370 && y < 420 && board[7][1] == "."){
-                board[7][1] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(7,1,"black");
+                //board[7][1] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>120 && x< 170 && y > 370 && y < 420 && board[7][2] == "."){
-                board[7][2] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(7,2,"black");
+                //board[7][2] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>170 && x< 220 && y > 370 && y < 420 && board[7][3] == "."){
-                board[7][3] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(7,3,"black");
+                //board[7][3] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>220 && x< 270 && y > 370 && y < 420 && board[7][4] == "."){
-                board[7][4] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(7,4,"black");
+                //board[7][4] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>270 && x< 320 && y > 370 && y < 420 && board[7][5] == "."){
-                board[7][5] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(7,5,"black");
+                //board[7][5] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>320 && x< 370 && y > 370 && y < 420 && board[7][6] == "."){
-                board[7][6] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(7,6,"black");
+                //board[7][6] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
             else if(x>370 && x< 420 && y > 370 && y < 420 && board[7][7] == "."){
-                
-                board[7][7] = "B";
-                drawBoard();
-                whiteTurn = true;
-                document.getElementById("turnIndicator").innerHTML = "White Turn";
+                allowedMove(7,7,"black");
+                //board[7][7] = "B";
+                //drawBoard();
+                //whiteTurn = true;
+                //document.getElementById("turnIndicator").innerHTML = "White Turn";
             }
 
 
@@ -1229,6 +1292,445 @@ myCanvas.addEventListener('click', function(event) {
     //console.log("x:" + x + " y:" + y);
 }, false);
 
+function allowedMove(row,column,colourTurn){
+    //[N,NE,E,SE,S,SW,W,NW]
+    arrayBuilder = [
+        [[0,0,7,7,7,0,0,0],[0,0,6,6,7,1,1,0],[0,0,5,5,7,2,2,0],[0,0,4,4,7,3,3,0],[0,0,3,3,7,4,4,0],[0,0,2,2,7,5,5,0],[0,0,1,1,7,6,6,0],[0,0,0,0,7,7,7,0]],
+        [[1,1,7,6,6,0,0,0],[1,1,6,6,6,1,1,1],[1,1,5,5,6,2,2,1],[1,1,4,4,6,3,3,1],[1,1,3,3,6,4,4,1],[1,1,2,2,6,5,5,1],[1,1,1,1,6,6,6,1],[1,0,0,0,6,6,7,1]],
+        [[2,2,7,5,5,0,0,0],[2,2,6,5,5,1,1,1],[2,2,5,5,5,2,2,2],[2,2,4,4,5,3,3,2],[2,2,3,3,5,4,4,2],[2,2,2,2,5,5,5,2],[2,1,1,1,5,5,6,2],[2,0,0,0,5,5,7,2]],
+        [[3,3,7,4,4,0,0,0],[3,3,6,4,4,1,1,1],[3,3,5,4,4,2,2,2],[3,3,4,4,4,3,3,3],[3,3,3,4,4,4,4,3],[3,2,2,2,4,4,5,3],[3,1,1,1,4,4,6,3],[3,0,0,0,4,4,7,3]],
+        [[4,4,7,3,3,0,0,0],[4,4,6,3,3,1,1,1],[4,4,5,3,3,2,2,2],[4,4,4,3,3,3,3,3],[4,3,3,3,3,3,4,4],[4,2,2,2,3,3,5,4],[4,1,1,1,3,3,6,4],[4,0,0,0,3,3,7,4]],
+        [[5,5,7,2,2,0,0,0],[5,5,6,2,2,1,1,1],[5,5,5,2,2,2,2,2],[5,4,4,2,2,2,3,3],[5,3,3,2,2,2,4,4],[5,2,2,2,2,2,5,5],[5,1,1,1,2,2,6,5],[5,0,0,0,2,2,7,5]],
+        [[6,6,7,1,1,0,0,0],[6,6,6,1,1,1,1,1],[6,5,5,1,1,1,2,2],[6,4,4,1,1,1,3,3],[6,3,3,1,1,1,4,4],[6,2,2,1,1,1,5,5],[6,1,1,1,1,1,6,6],[6,0,0,0,1,1,7,6]],
+        [[7,7,7,0,0,0,0,0],[7,6,6,0,0,0,1,1],[7,5,5,0,0,0,2,2],[7,4,4,0,0,0,3,3],[7,3,3,0,0,0,4,4],[7,2,2,0,0,0,5,5],[7,1,1,0,0,0,6,6],[7,0,0,0,0,0,7,7]]
+    ]
+
+    arrayNorth = [];
+    arrayNorthEast = [];
+    arrayEast = [];
+    arraySouthEast = [];
+    arraySouth = [];
+    arraySouthWest = [];
+    arrayWest = [];
+    arrayNorthWest = [];
+
+    //build the North Array
+    
+    for(i = 0; i < arrayBuilder[row][column][0]; i ++){
+        arrayNorth.push(board[row - i - 1][column]);
+    }
+    //build the North East Array
+    for(i=0; i < arrayBuilder[row][column][1]; i++){
+        arrayNorthEast.push(board[row-i-1][column+i+1]);
+    }
+    //build the East Array
+    for(i=0; i < arrayBuilder[row][column][2]; i++){
+        arrayEast.push(board[row][column+i+1]);
+    }
+    //build the array for SouthEast
+    for(i=0; i < arrayBuilder[row][column][3]; i++){
+        arraySouthEast.push(board[row+i+1][column+i+1]);
+    }
+    //build the array for South
+    for(i=0; i < arrayBuilder[row][column][4]; i++){
+        arraySouth.push(board[row+i+1][column]);
+    }
+    //build the array for SouthWest
+    for(i=0; i < arrayBuilder[row][column][5]; i++){
+        arraySouthWest.push(board[row+i+1][column-i-1]);
+    }
+    //build the array for West
+    for(i=0; i < arrayBuilder[row][column][6]; i++){
+        arrayWest.push(board[row][column-i-1]);
+    }
+    //build the array for NorthWest
+    for(i=0; i < arrayBuilder[row][column][7]; i++){
+        arrayNorthWest.push(board[row-i-1][column-i-1]);
+    }
+    
+    //CHECK THE ARRAYS
+    
+    //console.log("North : " + arrayNorth);
+    //console.log("NorthEast : " + arrayNorthEast);
+    //console.log("East : " + arrayEast);
+    //console.log("arrayEast : "+ arrayEast[0]);
+    //console.log("SouthEast : " + arraySouthEast);
+    //console.log("South : " + arraySouth);
+    //console.log("SouthWest : " + arraySouthWest);
+    //console.log("West : " + arrayWest);
+    //console.log("NorthWest : " + arrayNorthWest);
+    
+    if(colourTurn == "white"){
+        //check each array to find out if there is a run of black followed
+        //by a white. If there is, change the black tokens to white
+       
+        //North Array
+        if(arrayNorth[0] == "B"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arrayNorth.length; i++){
+                
+                if(arrayNorth[i] == "W"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row-i-1][column] = "W";
+                }
+                board[row][column] = "W";
+                whiteTurn = false;
+                document.getElementById('turnIndicator').innerHTML = "Black Turn";
+            }
+        }
+        //North East Array
+        if(arrayNorthEast[0] == "B"){
+
+            arrayIndexes = [];
+            for(i=0; i < arrayNorthEast.length; i++){
+
+                if(arrayNorthEast[i] == "W"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row-i-1][column+i+1] = "W";
+                }
+                board[row][column] = "W";
+                whiteTurn = false;
+                document.getElementById('turnIndicator').innerHTML = "Black Turn";
+            }
+        }
+        //East Array
+        if(arrayEast[0] == "B"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arrayEast.length; i++){
+                
+                if(arrayEast[i] == "W"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row][column+i+1] = "W";
+                }
+                board[row][column] = "W";
+                whiteTurn = false;
+                document.getElementById('turnIndicator').innerHTML = "Black Turn";
+            }
+        }
+        //South East Array
+        if(arraySouthEast[0] == "B"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arraySouthEast.length; i++){
+                
+                if(arraySouthEast[i] == "W"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row+i+1][column+i+1] = "W";
+                }
+                board[row][column] = "W";
+                whiteTurn = false;
+                document.getElementById('turnIndicator').innerHTML = "Black Turn";
+            }
+        }
+        //South Array
+        if(arraySouth[0] == "B"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arraySouth.length; i++){
+                
+                if(arraySouth[i] == "W"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row+i+1][column] = "W";
+                }
+                board[row][column] = "W";
+                whiteTurn = false;
+                document.getElementById('turnIndicator').innerHTML = "Black Turn";
+            }
+        }
+        //South West Array
+        if(arraySouthWest[0] == "B"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arraySouthWest.length; i++){
+                
+                if(arraySouthWest[i] == "W"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row+i+1][column-i-1] = "W";
+                }
+                board[row][column] = "W";
+                whiteTurn = false;
+                document.getElementById('turnIndicator').innerHTML = "Black Turn";
+            }
+        }
+        //West Array
+        if(arrayWest[0] == "B"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arrayWest.length; i++){
+                
+                if(arrayWest[i] == "W"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row][column-i-1] = "W";
+                }
+                board[row][column] = "W";
+                whiteTurn = false;
+                document.getElementById('turnIndicator').innerHTML = "Black Turn";
+            }
+        }
+        //North West Array
+        if(arrayNorthWest[0] == "B"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arrayNorthWest.length; i++){
+                
+                if(arrayNorthWest[i] == "W"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row-i-1][column-i-1] = "W";
+                }
+                board[row][column] = "W";
+                whiteTurn = false;
+                document.getElementById('turnIndicator').innerHTML = "Black Turn";
+            }
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////////
+    //DEAL WITH BLACKS
+    /////////////////////////////////////////////////////////////////////////////////
+    else{
+        //North Array
+        if(arrayNorth[0] == "W"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arrayNorth.length; i++){
+                
+                if(arrayNorth[i] == "B"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row-i-1][column] = "B";
+                }
+                board[row][column] = "B";
+                whiteTurn = true;
+                document.getElementById('turnIndicator').innerHTML = "White Turn";
+            }
+        }
+        //North East Array
+        if(arrayNorthEast[0] == "W"){
+
+            arrayIndexes = [];
+            for(i=0; i < arrayNorthEast.length; i++){
+
+                if(arrayNorthEast[i] == "B"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row-i-1][column+i+1] = "B";
+                }
+                board[row][column] = "B";
+                whiteTurn = true;
+                document.getElementById('turnIndicator').innerHTML = "White Turn";
+            }
+        }
+        //East Array
+        if(arrayEast[0] == "W"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arrayEast.length; i++){
+                
+                if(arrayEast[i] == "B"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row][column+i+1] = "B";
+                }
+                board[row][column] = "B";
+                whiteTurn = true;
+                document.getElementById('turnIndicator').innerHTML = "White Turn";
+            }
+        }
+        //South East Array
+        if(arraySouthEast[0] == "W"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arraySouthEast.length; i++){
+                
+                if(arraySouthEast[i] == "B"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row+i+1][column+i+1] = "B";
+                }
+                board[row][column] = "B";
+                whiteTurn = true;
+                document.getElementById('turnIndicator').innerHTML = "White Turn";
+            }
+        }
+        //South Array
+        if(arraySouth[0] == "W"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arraySouth.length; i++){
+                
+                if(arraySouth[i] == "B"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row+i+1][column] = "B";
+                }
+                board[row][column] = "B";
+                whiteTurn = true;
+                document.getElementById('turnIndicator').innerHTML = "White Turn";
+            }
+        }
+        //South West Array
+        if(arraySouthWest[0] == "W"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arraySouthWest.length; i++){
+                
+                if(arraySouthWest[i] == "B"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row+i+1][column-i-1] = "B";
+                }
+                board[row][column] = "B";
+                whiteTurn = true;
+                document.getElementById('turnIndicator').innerHTML = "White Turn";
+            }
+        }
+        //West Array
+        if(arrayWest[0] == "W"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arrayWest.length; i++){
+                
+                if(arrayWest[i] == "B"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row][column-i-1] = "B";
+                }
+                board[row][column] = "B";
+                whiteTurn = true;
+                document.getElementById('turnIndicator').innerHTML = "White Turn";
+            }
+        }
+        //North West Array
+        if(arrayNorthWest[0] == "W"){
+            
+            arrayIndexes = [];
+            for(i=0; i < arrayNorthWest.length; i++){
+                
+                if(arrayNorthWest[i] == "B"){
+                    arrayIndexes.push(i);
+                }
+                var turnIndex = Math.min.apply(Math,arrayIndexes);
+                
+            }
+            if(arrayIndexes.length != 0){
+                for(i=0; i < turnIndex+1; i++){
+                    board[row-i-1][column-i-1] = "B";
+                }
+                board[row][column] = "B";
+                whiteTurn = true;
+                document.getElementById('turnIndicator').innerHTML = "White Turn";
+            }
+        }
+    }
+
+
+
+
+
+
+
+    
+
+       
+    //reset the checking arrays
+    arrayNorth = [];
+    arrayNorthEast = [];
+    arrayEast = [];
+    arraySouthEast = [];
+    arraySouth = [];
+    arraySouthWest = [];
+    arrayWest = [];
+    arrayNorthWest = [];
+    
+    drawBoard();
+    
+}
+
+/*
 function allowedMove(row,column,colourTurn){
     if (colourTurn == "white"){
         
@@ -1252,6 +1754,7 @@ function allowedMove(row,column,colourTurn){
 
         }*/
         //***************FOUR CORNERS*************/
+        /*
         if(row == 0 && column == 0 && board[row][column] == "."){//top left corner
             arrayEast = [];
             arraySouthEast = [];
@@ -1375,5 +1878,5 @@ function allowedMove(row,column,colourTurn){
         }
     }
 }
-
+*/
 drawBoard();
